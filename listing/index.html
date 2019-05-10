@@ -35,6 +35,14 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
 
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+
 </head>
 
 <body>
@@ -48,28 +56,30 @@
             </a>
 
             <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button"
+             data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon-bar">
                     <i class="fa fa-bars"></i>
                 </span>
             </button>
+            
 
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <!-- Links -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="/File/index.html/">
+                        <a class="nav-link js-scroll-trigger" href="/File/index.html">
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#feature">
+                        <a class="nav-link js-scroll-trigger" href="/File/index.html">
                             About
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">
+                        <a class="nav-link js-scroll-trigger" href="/SignUp/index.html">
                             Sign Up
                         </a>
                     </li>
@@ -106,8 +116,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="slider-content_wrap">
-                                    <h1>Connect to a Therapist or Sponser</h1>
-                                    <h5>Connect to a therapist or sponser near you.</h5>
+                                    <h1>Connect to a Therapist or Sponsor</h1>
+                                    <h5>Connect to a therapist or sponsor near you.</h5>
                                 </div>
                             </div>
                         </div>
@@ -115,13 +125,21 @@
                             <div class="col-md-10">
                                 <form class="form-wrap mt-4">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <input type="text" placeholder="What are your looking for?" class="btn-group1" data-toggle="dropdown" >
-                                        <input type="text" placeholder="City, Zip or Name" class="btn-group2">
-                                        <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
+                                        <input type="text" placeholder="Full Name" class="btn-group1" data-toggle="dropdown" >
+                                        <input type="text" placeholder="Zip code" class="btn-group2">
+                                        
+                                        
+                                        <button type="button" class="btn-form" onclick="showHide(); showHide2(); smoothScroll(document.getElementById('map'));">
+                                            
+                                        
+                                            <span class="ico
+                                            n-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i>
+                                           
+                                        </button> 
                                     </div>
                                 </form>
                                 <div class="slider-link">
-                                    <!-- <a href="#">Browse Popular</a><span> -->
+                                    
                                 </div>
                             </div>
                         </div>
@@ -130,12 +148,121 @@
             </div>
         </div>
     </section>
+<<<<<<< HEAD
     <!--// SLIDER -->
     <!--//END HEADER -->
+=======
+
+ 
+       <!--The div element for the map -->
+       <div id="map" style="display: none"> </div>
+       
+       
+       
+       <script>
+       // Initialize and add the map
+function initMap() {
+    // The location of Uluru
+    var uluru = {lat: 40.7728, lng: -74.000};
+    
+    // points on map
+    var loc = {lat: 40.7619348, lng: -73.980639};
+      var loc1 = {lat: 40.7182131, lng: -74.0031608};
+    var loc2 = {lat: 40.7490725, lng: -73.9935936};
+    // The map, centered at Uluru
+    
+    
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 11, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: loc, map: map});
+    var marker1 = new google.maps.Marker({position: loc1, map: map});
+    var marker2 = new google.maps.Marker({position: loc2, map: map});
+  }
+   
+   
+
+
+
+
+   
+    </script>
+       
+       
+
+       <script>
+       function showHide() {
+    var div = document.getElementById("map");
+    if (div.style.display === "none") {
+        div.style.display = "block";
+    } else {
+        div.style.display = "none";
+    }
+}
+</script>
+       
+
+
+       <script>
+        function showHide2() {
+     var div = document.getElementById("doct");
+     if (div.style.display === "none") {
+         div.style.display = "block";
+     } else {
+         div.style.display = "none";
+     }
+ }
+
+
+ window.smoothScroll = function (target) {
+    var scrollContainer = target;
+    do { //find scroll container
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+
+    var targetY = 0;
+    do { //find the top of target relatively to the container
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+
+    scroll = function (c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 40 * i; //how far it scrolls
+        setTimeout(function () { scroll(c, a, b, i); }, 35); //fast or slow scrolls
+    }
+    // start scrolling
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+
+ </script>
+        
+       <!-- Replace the value of the key parameter with your own API key. -->
+        
+        
+        
+        
+        
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh0sYrC_0n6vS9XKfmNuTJJNSE6dqnpi0&callback=initMap">
+        </script>
+    
+
+
+
+
+
+
+
+
+
+>>>>>>> 09f7dc66465c9e4e4b82670a1fd5b07948229621
 
     <!--============================= FEATURED PLACES =============================-->
     <section class="main-block light-bg">
-        <div class="container">
+        <div class="container" id="doct" style="display:none">
             <div class="row justify-content-center">
                 <div class="col-md-5">
                     <div class="styled-heading">
