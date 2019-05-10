@@ -61,6 +61,7 @@
                     <i class="fa fa-bars"></i>
                 </span>
             </button>
+            
 
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -125,7 +126,15 @@
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <input type="text" placeholder="Full Name" class="btn-group1" data-toggle="dropdown" >
                                         <input type="text" placeholder="Zip code" class="btn-group2">
-                                        <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
+                                        
+                                        
+                                        <button type="submit" class="btn-form" onclick="showHide();">
+                                            
+                                        
+                                            <span class="ico
+                                            n-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i>
+                                           
+                                        </button> 
                                     </div>
                                 </form>
                                 <div class="slider-link">
@@ -139,9 +148,12 @@
         </div>
     </section>
 
-    <h3>My Google Maps Demo</h3>
+ 
        <!--The div element for the map -->
-       <div id="map"></div>
+       <div id="map" style="display: none"> </div>
+       
+       
+       
        <script>
        // Initialize and add the map
 function initMap() {
@@ -162,14 +174,44 @@ function initMap() {
     var marker1 = new google.maps.Marker({position: loc1, map: map});
     var marker2 = new google.maps.Marker({position: loc2, map: map});
   }
+   
+   
+   
     </script>
-        <!-- Replace the value of the key parameter with your own API key. -->
+       
+       
+
+       <script>
+       function showHide() {
+    var div = document.getElementById("map");
+    if (div.style.display === "none") {
+        div.style.display = "block";
+    } else {
+        div.style.display = "none";
+    }
+}
+</script>
+       
+       <!-- Replace the value of the key parameter with your own API key. -->
+        
+        
+        
+        
+        
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh0sYrC_0n6vS9XKfmNuTJJNSE6dqnpi0&callback=initMap">
         </script>
-    <!--// SLIDER -->
-    <!--//END HEADER -->
     
+
+
+
+
+
+
+
+
+
+
     <!--============================= FEATURED PLACES =============================-->
     <section class="main-block light-bg">
         <div class="container">
