@@ -56,7 +56,8 @@
             </a>
 
             <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button"
+             data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon-bar">
                     <i class="fa fa-bars"></i>
                 </span>
@@ -128,7 +129,7 @@
                                         <input type="text" placeholder="Zip code" class="btn-group2">
                                         
                                         
-                                        <button type="submit" class="btn-form" onclick="showHide();">
+                                        <button type="button" class="btn-form" onclick="showHide(); showHide2(); smoothScroll(document.getElementById('map'));">
                                             
                                         
                                             <span class="ico
@@ -176,6 +177,10 @@ function initMap() {
   }
    
    
+
+
+
+
    
     </script>
        
@@ -192,6 +197,44 @@ function initMap() {
 }
 </script>
        
+
+
+       <script>
+        function showHide2() {
+     var div = document.getElementById("doct");
+     if (div.style.display === "none") {
+         div.style.display = "block";
+     } else {
+         div.style.display = "none";
+     }
+ }
+
+
+ window.smoothScroll = function (target) {
+    var scrollContainer = target;
+    do { //find scroll container
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+
+    var targetY = 0;
+    do { //find the top of target relatively to the container
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+
+    scroll = function (c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 40 * i; //how far it scrolls
+        setTimeout(function () { scroll(c, a, b, i); }, 35); //fast or slow scrolls
+    }
+    // start scrolling
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+
+ </script>
+        
        <!-- Replace the value of the key parameter with your own API key. -->
         
         
@@ -214,7 +257,7 @@ function initMap() {
 
     <!--============================= FEATURED PLACES =============================-->
     <section class="main-block light-bg">
-        <div class="container">
+        <div class="container" id="doct" style="display:none">
             <div class="row justify-content-center">
                 <div class="col-md-5">
                     <div class="styled-heading">
